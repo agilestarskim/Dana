@@ -8,7 +8,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, title, children }) {
+const Seo = ({ description, title, image, children }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -17,6 +17,7 @@ function Seo({ description, title, children }) {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -25,18 +26,23 @@ function Seo({ description, title, children }) {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+  const defaultImage = `${site.siteMetadata.siteUrl}/default-og-image.jpg`
+  const ogImage = image || defaultImage
 
   return (
     <>
       <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
       <meta name="description" content={metaDescription} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={metaDescription} />
+      
+      {/* Open Graph / 카카오톡 공유 메타 태그 */}
       <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
+      <meta property="og:title" content={title} />
+      <meta property="og:site_name" content={defaultTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content={site.siteMetadata.siteUrl} />
       {children}
     </>
   )

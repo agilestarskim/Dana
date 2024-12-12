@@ -16,3 +16,16 @@ exports.createPages = async ({ actions }) => {
     defer: true,
   })
 }
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+
+  // 404 페이지일 경우
+  if (page.path === '/404/') {
+    deletePage(page)
+    createPage({
+      ...page,
+      matchPath: '/*', // 모든 존재하지 않는 경로에 대해 매칭
+    })
+  }
+}

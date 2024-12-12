@@ -1,0 +1,63 @@
+.aboutSection {
+  padding: 6rem 2rem;
+  background-color: #fafafa;
+}
+
+.aboutSection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.aboutContent {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.aboutContent p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statItem h3 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.statItem p {
+  font-size: 1rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .statsContainer {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .aboutSection {
+    padding: 4rem 1rem;
+  }
+  
+  .aboutContent {
+    padding: 0 1rem;
+  }
+} 
